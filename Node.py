@@ -18,11 +18,11 @@ class Node(object):
         Constructor
         '''
         if data == None:
-            print "Please give correct parameters"
+            print("Please give correct parameters")
             return
         self.full_data = data
         self.data = list(set(data))
-        self.data.sort(cmp=None, key=None, reverse=False)
+        self.data.sort()
         self.bits_data = []
         self.bits_full_data = []
         self.childern = []
@@ -98,10 +98,10 @@ class Node(object):
     
     def __get_rank(self, position=None, bit=None):
         if position==None or bit==None:
-            print "Please give correct parameters"
+            print("Please give correct parameters")
             return -1
-        rs_position = position/(BLOCKS_NUM*BITS_NUM)    #Calculate rs and rb position
-        rb_position = position/BITS_NUM
+        rs_position = position//(BLOCKS_NUM*BITS_NUM)    #Calculate rs and rb position
+        rb_position = position//BITS_NUM
 
         rank = self.rs[rs_position]
         #Check if the position is at the same area, if is then ignore the rb
