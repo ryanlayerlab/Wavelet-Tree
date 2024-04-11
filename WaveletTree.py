@@ -17,23 +17,14 @@ class WaveletTree(object):
     """
     Query Functions
     """    
-    def rank_query(self,character=None, position=None):
-        if character==None or position==None or position <= 0:
-            print("Please give correct parameters")
-            return -1
+    def rank(self,character=None, position=None):
         return self.__root.get_rank_query(position,character)
     
-    def select_query(self,character=None, position=None):
-        if character==None or position==None or position <= 0:
-            print("Please give correct parameters")
-            return -1
-        return self.__root.get_select_query(position, character)
+    def select(self,character=None, position=None):
+        return self.__root.get_select_query(position + 1, character) - 1
     
-    def track_symbol(self,position=None):
-        if position==None or position <= 0:
-            print("Please give correct parameters")
-            return -1
-        return self.__root.get_track_symbol(position) 
+    def access(self,position=None):
+        return self.__root.get_track_symbol(position + 1)
     """
     Query Functions
     """   

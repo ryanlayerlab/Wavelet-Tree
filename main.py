@@ -3,18 +3,17 @@ Created on Jun 9, 2014
 
 @author: nectarios
 '''
-import sys
-from FileReader import FileReader
 from WaveletTree import WaveletTree
 
 def main():
-    file_reader = FileReader(sys.argv)
-    if (not file_reader.is_read()):
-        sys.exit()
-    wavelet_tree = WaveletTree(file_reader.get_characters())
-    print(wavelet_tree.track_symbol(1))
-    print(wavelet_tree.rank_query('$', 45))
-    print(wavelet_tree.select_query('e', 1))
+    s = 'BANANA$'
+    wavelet_tree = WaveletTree(s)
+    print(s + '.ACCESS(3)', wavelet_tree.access(3))
+    print(s + '.RANK(N, 4):', wavelet_tree.rank('N', 4))
+    print(s + '.RANK(A, 3):', wavelet_tree.rank('A', 3))
+    print(s + '.SELECT(A, 2):', wavelet_tree.select('A', 2))
+    print(s + '.SELECT(N, 1):', wavelet_tree.select('N', 1))
+    print(s + '.SELECT(B, 0):', wavelet_tree.select('B', 0))
     
 if __name__ == '__main__':
     main()
